@@ -9,7 +9,6 @@ import { NgForm } from "@angular/forms";
 export class TemplateDrivenFormComponent implements OnInit {
 
   userData:any = {}
-  show=true;
 
   formData(data:NgForm) {
     this.userData=data

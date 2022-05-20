@@ -1,0 +1,29 @@
+<section class="form-section">
+
+    <h2>Reactive Form</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="formData()">
+        <h3>Login</h3>
+      
+        <label>Username</label>
+        <input type="text" name="username" placeholder="Enter your Username here" formControlName="userName">
+        <span *ngIf="userName && userName.invalid && userName.touched">Username is invalid...!</span>
+
+        <label>Email Address</label>
+        <input type="email" name="email" placeholder="Enter your Email Address here" formControlName="emailAddress">
+        <span *ngIf="emailAddress && emailAddress.invalid && emailAddress.touched">Email Address is invalid...!</span>
+
+        <label>Password</label>
+        <input type="password" name="password" minlength="6" placeholder="Enter your Password here" formControlName="password">
+        <span *ngIf="password && password.invalid && password.touched">Password must contain 6 characters..!</span>
+
+        <button [disabled]="loginForm.invalid">Login</button>
+      </form>
+
+      <!-- Output -->
+      <!-- <div class="form-output">
+          <h3><span>Your Username is:</span> {{userData.username}}</h3>
+          <h3><span>Your Email Address is:</span> {{userData.email}}</h3>
+          <h3><span>Your password is:</span> {{userData.password}}</h3>
+      </div> -->
+</section>

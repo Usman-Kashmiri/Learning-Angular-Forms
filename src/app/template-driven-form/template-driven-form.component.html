@@ -6,22 +6,25 @@
         <h3>Registeration</h3>
       
         <label>Username</label>
-        <input type="text" ngModel name="username" placeholder="Enter your Username here">
+        <input type="text" ngModel name="username" placeholder="Enter your Username here" #userName="ngModel" required>
+        <span *ngIf="userName.invalid && userName.touched">Username is invalid...!</span>
 
         <label>Email Address</label>
-        <input type="email" ngModel name="email" placeholder="Enter your Email Address here">
+        <input type="email" ngModel name="email" placeholder="Enter your Email Address here" #emailAddress="ngModel" required>
+        <span *ngIf="emailAddress.invalid && emailAddress.touched">Email address is invalid...!</span>
 
         <label>Password</label>
-        <input type="password" ngModel name="password" placeholder="Enter your Password here">
-      
+        <input type="password" ngModel name="password" minlength="6" placeholder="Enter your Password here" #password="ngModel" required>
+        <span *ngIf="password.invalid && password.touched">password must contain 6 characters...!</span>
+
         <label>Confirm Password</label>
-        <input type="password" ngModel name="confirmPassword" placeholder="Confirm your Password">
-      
-        <button>Register</button>
+        <input type="password" ngModel minlength="6" name="confirmPassword" placeholder="Confirm your Password" #cpassword="ngModel" required>
+        <span *ngIf="cpassword.invalid && cpassword.touched">Confirm password mismatched...!</span>
+        <button [disabled]="registrationForm.invalid">Register</button>
       </form>
 
       <!-- Output -->
-      <div class="form-output">
+      <div [hidden]="registrationForm.invalid" class="form-output">
           <h3><span>Your Username is:</span> {{userData.username}}</h3>
           <h3><span>Your Email Address is:</span> {{userData.email}}</h3>
           <h3><span>Your password is:</span> {{userData.password}}</h3>
